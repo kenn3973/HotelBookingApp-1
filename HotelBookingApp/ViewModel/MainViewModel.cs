@@ -19,14 +19,12 @@ namespace HotelBookingApp.ViewModel
         }
 
 
-
+        Guest g1 = new Guest(1, "Rudi", "Something");
+        Guest g2 = new Guest(2, "Rudi", "Something");
+        Guest g3 = new Guest(3, "Rudi", "Something");
 
         public MainViewModel()
         {
-            Guest g1 = new Guest(1, "Rudi", "Something");
-            Guest g2 = new Guest(2, "Rudi", "Something");
-            Guest g3 = new Guest(3, "Rudi", "Something");
-
             DataSingelton = DataCatalogSingelton.Instance;
             //DataSingelton.Guests.Add(g1);
             //DataSingelton.Guests.Add(g2);

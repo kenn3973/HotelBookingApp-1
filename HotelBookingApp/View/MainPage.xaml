@@ -13,23 +13,41 @@
     </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="153,198,0,0" TextWrapping="Wrap" Text="MainPage Hello World" VerticalAlignment="Top"/>
-        <ListView ItemsSource="{Binding DataSingelton.Guests}" x:Name="listView" HorizontalAlignment="Left" Height="192" Margin="10,198,0,0" VerticalAlignment="Top" Width="100" Header="Test">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <StackPanel>
-                            <TextBlock Text="Navn"></TextBlock>
-                            <TextBlock Text="{Binding Name}"></TextBlock>
-                        </StackPanel>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
 
-        <ListView ItemsSource="{Binding DataSingelton.Guests}"></ListView>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
+        <Rectangle Fill="#acc6ef" Height="30" VerticalAlignment="Top"/>
+        <TextBlock x:Name="Header" Margin="0,5,0,0" TextWrapping="Wrap" Text="Hotel Booking App" VerticalAlignment="Top" Foreground="White" TextAlignment="Center" />
 
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Fill="#acc6ef" Grid.Column="0"/>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Button Width="auto" Height="auto">Hotels</Button>
+                <TextBlock Text="Guests" Grid.Row="1"></TextBlock>
+                <TextBlock Text="Rooms" Grid.Row="2"></TextBlock>
+                <TextBlock Text="Bookings" Grid.Row="3"></TextBlock>
+            </Grid>
+
+        </Grid>
 
     </Grid>
 </Page>
