@@ -10,16 +10,13 @@ namespace HotelBookingApp.Model
     {
 
         public int Guest_No { get; set; }
-
         public string Name { get; set; }
-
         public string Address { get; set; }
-
         //public virtual ICollection<Booking> Bookings { get; set; }
 
-        public Guest(int Guest_no, string Name, string Address)
+        public Guest(int guest_no, string Name, string Address)
         {
-            this.Guest_No = Guest_No;
+            this.Guest_No = guest_no;
             this.Name = Name;
             this.Address = Address;
         }
