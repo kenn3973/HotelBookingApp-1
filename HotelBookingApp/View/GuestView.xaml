@@ -49,7 +49,7 @@
             </Grid>
 
 
-            <ListView ItemsSource="{Binding DataSingelton.Guests}" Grid.Column="1" Header="Test">
+            <ListView ItemsSource="{Binding DataSingelton.Guests}" Grid.Column="1" Header="All Guests" VerticalAlignment="Top" Height="200">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
