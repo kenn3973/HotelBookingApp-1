@@ -11,9 +11,48 @@
     <Page.DataContext>
         <ViewModel:MainViewModel/>
     </Page.DataContext>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <ListView ItemsSource="{Binding DataSingelton.Guests}"></ListView>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- HEADER -->
+        <Rectangle Fill="#acc6ef" Height="30" VerticalAlignment="Top"/>
+        <TextBlock x:Name="Header" Margin="0,5,0,0" TextWrapping="Wrap" Text="Hotel Booking App Home" VerticalAlignment="Top" Foreground="White" TextAlignment="Center" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Fill="#acc6ef" Grid.Column="0"/>
+
+            <Grid Grid.Column="0" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Button Width="auto" Height="50" VerticalAlignment="Top" HorizontalAlignment="Stretch" Grid.Row="0" FontSize="10" Name="Hotel" Content="Hotels" Background="#acc6ef" Click="Hotel_Click"/>
+                <Button Width="auto" Height="50" VerticalAlignment="Top" HorizontalAlignment="Stretch" Grid.Row="1" FontSize="10" Name="Guest" Content="Guests" Background="#acc6ef" Click="Guest_Click"/>
+                <Button Width="auto" Height="50" VerticalAlignment="Top" HorizontalAlignment="Stretch" Grid.Row="2" FontSize="10" Name="Room"  Content="Rooms" Background="#acc6ef" Click="Room_Click" />
+                <Button Width="auto" Height="50" VerticalAlignment="Top" HorizontalAlignment="Stretch" Grid.Row="3" FontSize="10" Name="Booking" Content="Bookings" Background="#acc6ef" Click="Booking_Click"/>
+            </Grid>
+
+
+            <ListView ItemsSource="{Binding DataSingelton.Guests}" Grid.Column="1" Header="Test"></ListView>
+
+        </Grid>
+
     </Grid>
 
 </Page>

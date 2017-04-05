@@ -26,5 +26,26 @@ namespace HotelBookingApp.View
         {
             this.InitializeComponent();
         }
+
+
+        private void Hotel_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+        }
+
+        private void Guest_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(GuestView));
+        }
+
+        private void Room_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(RoomView));
+        }
+
+        private void Booking_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(BookingView));
+        }
     }
 }
