@@ -24,20 +24,17 @@ namespace HotelBookingApp.ViewModel
         public string Address { get; set; }
 
         /*Test*/
-        Guest g1 = new Guest(1, "Rudi", "Something");
-        Guest g2 = new Guest(2, "Rudi", "Something");
-        Guest g3 = new Guest(3, "Rudi", "Something");
+        //Guest g1 = new Guest(1, "Rudi", "Something");
+        //Guest g2 = new Guest(2, "Rudi", "Something");
+        //Guest g3 = new Guest(3, "Rudi", "Something");
 
 
         /*Constructor*/
         public MainViewModel()
         {
             DataSingelton = DataCatalogSingelton.Instance;
-            //DataSingelton.Guests.Add(g1);
-            //DataSingelton.Guests.Add(g2);
-            //DataSingelton.Guests.Add(g3);
-            DataCatalogSingelton.Instance.Guests.Clear();
-            DataCatalogSingelton.Instance.Guests.Add(g1);
+
+            Facade.Facade.getAllGuests();
 
 
         }

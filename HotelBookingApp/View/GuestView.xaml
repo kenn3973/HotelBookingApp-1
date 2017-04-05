@@ -49,7 +49,23 @@
             </Grid>
 
 
-            <ListView ItemsSource="{Binding DataSingelton.Guests}" Grid.Column="1" Header="Test"></ListView>
+            <ListView ItemsSource="{Binding DataSingelton.Guests}" Grid.Column="1" Header="Test">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Guest_No}"></TextBlock>
+
+                                <TextBlock Text="Guest Name:"></TextBlock>
+                                <TextBlock Text="{Binding Name}"></TextBlock>
+
+                                <TextBlock Text="Address:"></TextBlock>
+                                <TextBlock Text="{Binding Address}"></TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
         </Grid>
 
