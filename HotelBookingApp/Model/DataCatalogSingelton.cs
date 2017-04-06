@@ -48,6 +48,15 @@ namespace HotelBookingApp.Model
         {
             Facade.Facade.PostNewGuest(GuestToAdd);
             DataCatalogSingelton.Instance.Guests.Add(GuestToAdd);
+            DataCatalogSingelton.Instance.Guests.Clear();
+            GetGuestsAsync();
+        }
+
+        /*Update*/
+        public void UpdateGuest(Guest guestToUpdate)
+        {
+            Facade.Facade.PutNewGuest(guestToUpdate);
+            DataCatalogSingelton.Instance.Guests.Clear();
             GetGuestsAsync();
         }
 

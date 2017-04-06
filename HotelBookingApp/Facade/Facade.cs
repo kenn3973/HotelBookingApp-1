@@ -111,5 +111,36 @@ namespace HotelBookingApp.Facade
             }
         }
 
+        public static void PutNewGuest(Guest newGuest)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(serverUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                try
+                {
+                    var response = client.PutAsJsonAsync<Guest>($"api/Guests/{newGuest.Guest_No}", newGuest).Result;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        //MessageDialogHelper.show("ny event added");
+                        Debug.Write("You have insertet a new event to the DB");
+                        Debug.Write("Status code : " + response.StatusCode);
+                    }
+                    else
+                    {
+                        Debug.Write("Something went wrong " + response);
+                        Debug.Write("Statuscode : " + response.StatusCode);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.Write("The error is : " + e.Message);
+                }
+            }
+        }
+
+
     }
 }

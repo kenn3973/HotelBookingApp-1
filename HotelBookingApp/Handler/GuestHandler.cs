@@ -29,6 +29,13 @@ namespace HotelBookingApp.Handler
         }
 
 
+        /*Update*/
+        public void UpdateGuest()
+        {
+            Guest updateGuest = MainViewModel.NewGuest;
+            DataCatalogSingelton.Instance.UpdateGuest(updateGuest);
+        }
+
         public void DeleteGuest()
         {
             DataCatalogSingelton.Instance.RemoveGuest(MainViewModel.SelectedGuest);

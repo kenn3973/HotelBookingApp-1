@@ -31,6 +31,23 @@ namespace HotelBookingApp.ViewModel
         public GuestHandler guestHandler { get; set; }
 
 
+
+
+        private Guest _newGuest;
+
+        public Guest NewGuest
+        {
+            get { return _newGuest; }
+            set
+            {
+                _newGuest = value;
+                OnPropertyChanged(nameof(NewGuest));
+
+            }
+        }
+
+
+
         /*Selected Guest*/
         private Guest _selectedGuest;
         public Guest SelectedGuest
@@ -40,12 +57,14 @@ namespace HotelBookingApp.ViewModel
             {
                 _selectedGuest = value;
                 OnPropertyChanged(nameof(SelectedGuest));
+                NewGuest = new Guest(SelectedGuest.Guest_No, SelectedGuest.Name, SelectedGuest.Address);
             }
         }
 
         /*Commands Properties*/
         public ICommand CreateGuestCommand { get; set; }
         public ICommand DeleteGuestComand { get; set; }
+        public ICommand UpdateGuestCommand { get; set; }
 
 
 
@@ -60,6 +79,8 @@ namespace HotelBookingApp.ViewModel
 
             CreateGuestCommand = new RelayCommand(guestHandler.CreateGuest, null);
             DeleteGuestComand = new RelayCommand(guestHandler.DeleteGuest, null);
+
+            UpdateGuestCommand = new RelayCommand(guestHandler.UpdateGuest, null);
 
 
         }

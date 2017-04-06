@@ -91,11 +91,11 @@
                         <RowDefinition Height="50"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <TextBox  Header="Guest nr:" FontSize="10" Text="{Binding SelectedGuest.Guest_No}" Grid.Column="0" Grid.Row="0" />
-                    <TextBox  Header="Navn:" FontSize="10" Text="{Binding SelectedGuest.Name}" Grid.Column="1" Grid.Row="0" ></TextBox>
-                    <TextBox  Header="Address:" FontSize="10" Text="{Binding SelectedGuest.Address}" Grid.Column="2" Grid.Row="0" ></TextBox>
+                    <TextBox  Header="Guest nr:" FontSize="10" Text="{Binding  NewGuest.Guest_No, Mode=TwoWay}" Grid.Column="0" Grid.Row="0" />
+                    <TextBox  Header="Navn:" FontSize="10" Text="{Binding NewGuest.Name, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" ></TextBox>
+                    <TextBox  Header="Address:" FontSize="10" Text="{Binding NewGuest.Address, Mode=TwoWay}" Grid.Column="2" Grid.Row="0" ></TextBox>
 
-                    <Button  Content="Update" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Height="25" FontSize="10" VerticalAlignment="Top"></Button>
+                    <Button  Content="Update" Command="{Binding UpdateGuestCommand}" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Height="25" FontSize="10" VerticalAlignment="Top"></Button>
                     <Button Content="Delete" Command="{Binding DeleteGuestComand}" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right" Height="25" FontSize="10" VerticalAlignment="Top"></Button>
 
                     <TextBlock Grid.Row="2" Grid.Column="1"  Text="Insert Guest" TextAlignment="Center"></TextBlock>
