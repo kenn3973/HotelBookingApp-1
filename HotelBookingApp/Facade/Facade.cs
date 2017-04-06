@@ -7,47 +7,44 @@ using HotelBookingApp.Model;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Diagnostics;
+using Windows.UI.Popups;
+using System.Collections.ObjectModel;
 
 namespace HotelBookingApp.Facade
 {
     static class Facade
     {
-        /*GET*/
-        public static void getAllGuests()
+
+        const string serverUrl = "http://hotelws20170329124147.azurewebsites.net";
+
+        /*GET GUESTS ASYNC*/
+        public static async Task<ObservableCollection<Guest>> GetGuestsAsync()
         {
-            DataCatalogSingelton.Instance.Guests.Clear();
-            const string serverUrl = "http://hotelws20170329124147.azurewebsites.net";
+
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.BaseAddress = new Uri(serverUrl);
                 client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                string urlString = "api/guests";
+                string urlStringGet = "api/Guests/";
 
-                HttpResponseMessage response = client.GetAsync(urlString).Result;
                 try
                 {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var eventList = response.Content.ReadAsAsync<List<Guest>>().Result;
-                        var query = from e in eventList
-                                    select e;
+                    HttpResponseMessage getResponse = await client.GetAsync(urlStringGet);
 
-                        foreach (var item in query)
-                        {
-                            DataCatalogSingelton.Instance.Guests.Add(item);
-                        }
-                    }
-                    else
+                    if (getResponse.IsSuccessStatusCode)
                     {
-                        Debug.Write("Something went wrong " + response);
-
+                        var TempGuestsCollection = await getResponse.Content.ReadAsAsync<ObservableCollection<Guest>>();
+                        return TempGuestsCollection;
                     }
                 }
                 catch (Exception e)
                 {
-                    Debug.Write("The error is : " + e.Message);
+                    MessageDialog exception = new MessageDialog(e.Message);
                 }
+                /*Har prøvet at få en MessageDialog til at bekræfte at gæsterne er hentet fra databasen, men det lykkedes ikke.*/
+                //MessageDialog succes = new MessageDialog($"Gæsterne blev hentet fra databasen via {serverUrl} Hotel Guest Web Service.");
+                return null;
             }
         }
     }

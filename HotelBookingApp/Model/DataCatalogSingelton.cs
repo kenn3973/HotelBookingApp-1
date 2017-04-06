@@ -28,6 +28,19 @@ namespace HotelBookingApp.Model
         private DataCatalogSingelton()
         {
             Guests = new ObservableCollection<Guest>();
+            GetGuestsAsync();
+        }
+
+
+        /*Guest List methoder*/
+
+        /*Foreaches over all objects from GetGuestsAsync Get call, and inserts them into the Guests observable collection list*/
+        public async Task GetGuestsAsync()
+        {
+            foreach (var item in await Facade.Facade.GetGuestsAsync())
+            {
+                this.Guests.Add(item);
+            }
         }
 
     }

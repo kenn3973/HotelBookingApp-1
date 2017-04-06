@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HotelBookingApp.Model;
+using System.ComponentModel;
 
 namespace HotelBookingApp.ViewModel
 {
-    class MainViewModel
+    class MainViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /*Singelton*/
         private DataCatalogSingelton _dataSingelton;
 
@@ -23,21 +26,32 @@ namespace HotelBookingApp.ViewModel
         public string Name { get; set; }
         public string Address { get; set; }
 
-        /*Test*/
-        //Guest g1 = new Guest(1, "Rudi", "Something");
-        //Guest g2 = new Guest(2, "Rudi", "Something");
-        //Guest g3 = new Guest(3, "Rudi", "Something");
 
+        /*Selected Guest*/
+        private Guest _selectedGuest;
+        public Guest SelectedGuest
+        {
+            get { return _selectedGuest; }
+            set { _selectedGuest = value; }
+        }
 
         /*Constructor*/
         public MainViewModel()
         {
             DataSingelton = DataCatalogSingelton.Instance;
-
-            Facade.Facade.getAllGuests();
-
-
         }
+
+
+        /*Prop changed*/
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this,
+                    new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
     }
 
 }
