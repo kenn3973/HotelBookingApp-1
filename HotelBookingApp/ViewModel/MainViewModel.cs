@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using HotelBookingApp.Model;
 using System.ComponentModel;
+using System.Windows.Input;
+using HotelBookingApp.Handler;
+using HotelBookingApp.Common;
 
 namespace HotelBookingApp.ViewModel
 {
@@ -25,6 +28,7 @@ namespace HotelBookingApp.ViewModel
         public int Guest_No { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
+        public GuestHandler guestHandler { get; set; }
 
 
         /*Selected Guest*/
@@ -38,10 +42,26 @@ namespace HotelBookingApp.ViewModel
                 OnPropertyChanged(nameof(SelectedGuest));
             }
         }
+
+        /*Commands Properties*/
+        public ICommand CreateGuestCommand { get; set; }
+        public ICommand DeleteGuestComand { get; set; }
+
+
+
         /*Constructor*/
         public MainViewModel()
         {
+
             DataSingelton = DataCatalogSingelton.Instance;
+
+            /*RelayCommand og refrence til handler*/
+            guestHandler = new GuestHandler(this);
+
+            CreateGuestCommand = new RelayCommand(guestHandler.CreateGuest, null);
+            DeleteGuestComand = new RelayCommand(guestHandler.DeleteGuest, null);
+
+
         }
 
 

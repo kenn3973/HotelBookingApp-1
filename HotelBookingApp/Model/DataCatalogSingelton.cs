@@ -43,5 +43,22 @@ namespace HotelBookingApp.Model
             }
         }
 
+        /*Add guest*/
+        public void AddGuest(Guest GuestToAdd)
+        {
+            Facade.Facade.PostNewGuest(GuestToAdd);
+            DataCatalogSingelton.Instance.Guests.Add(GuestToAdd);
+            GetGuestsAsync();
+        }
+
+        /*Delete guest*/
+        public void RemoveGuest(Guest GuestToRemove)
+        {
+            if (GuestToRemove != null)
+            {
+                Facade.Facade.DeleteGuestFromWS(GuestToRemove);
+                DataCatalogSingelton.Instance.Guests.Remove(GuestToRemove);
+            }
+        }
     }
 }

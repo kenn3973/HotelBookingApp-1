@@ -47,5 +47,69 @@ namespace HotelBookingApp.Facade
                 return null;
             }
         }
+
+        /*Delete Guest*/
+        /*Mangler at slettes bookings først. Elelrs bliver guest ikke slettet fra WS*/
+        public static void DeleteGuestFromWS(Guest selectedGuest)
+        {
+            var urlString = "api/guests/" + selectedGuest.Guest_No;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(serverUrl);
+                client.DefaultRequestHeaders.Clear();
+
+                try
+                {
+                    var response = client.DeleteAsync(urlString).Result;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Debug.Write("You deleted an event");
+                        Debug.Write("StatusCode : " + response.StatusCode);
+                    }
+                    else
+                    {
+                        Debug.Write("Event was not deleted");
+                        Debug.Write("StatusCode : " + response.StatusCode);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.Write("Something went wrong " + e.Message);
+                }
+            }
+        }
+
+
+        /*POST Guest*/
+        public static void PostNewGuest(Guest newGuest)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(serverUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                try
+                {
+                    var response = client.PostAsJsonAsync<Guest>("api/Guests", newGuest).Result;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        //MessageDialogHelper.show("ny event added");
+                        Debug.Write("You have insertet a new event to the DB");
+                        Debug.Write("Status code : " + response.StatusCode);
+                    }
+                    else
+                    {
+                        Debug.Write("Something went wrong " + response);
+                        Debug.Write("Statuscode : " + response.StatusCode);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.Write("The error is : " + e.Message);
+                }
+            }
+        }
+
     }
 }
