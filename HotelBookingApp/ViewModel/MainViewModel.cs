@@ -32,9 +32,12 @@ namespace HotelBookingApp.ViewModel
         public Guest SelectedGuest
         {
             get { return _selectedGuest; }
-            set { _selectedGuest = value; }
+            set
+            {
+                _selectedGuest = value;
+                OnPropertyChanged(nameof(SelectedGuest));
+            }
         }
-
         /*Constructor*/
         public MainViewModel()
         {
