@@ -91,7 +91,7 @@
                         <RowDefinition Height="50"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <TextBox  Header="Guest nr:" FontSize="10" Text="{Binding  NewGuest.Guest_No, Mode=TwoWay}" Grid.Column="0" Grid.Row="0" />
+                    <TextBox IsReadOnly="True" Header="Guest nr:" FontSize="10" Text="{Binding  NewGuest.Guest_No, Mode=TwoWay}" Grid.Column="0" Grid.Row="0" />
                     <TextBox  Header="Navn:" FontSize="10" Text="{Binding NewGuest.Name, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" ></TextBox>
                     <TextBox  Header="Address:" FontSize="10" Text="{Binding NewGuest.Address, Mode=TwoWay}" Grid.Column="2" Grid.Row="0" ></TextBox>
 

@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelBookingApp", "HotelBookingApp\HotelBookingApp.csproj", "{16C9759E-EE09-4AE4-A81F-CD7AD8388A25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{F4BB8529-B160-434D-AFAB-943933071266}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -33,6 +35,24 @@ Global
 		{16C9759E-EE09-4AE4-A81F-CD7AD8388A25}.Release|x86.ActiveCfg = Release|x86
 		{16C9759E-EE09-4AE4-A81F-CD7AD8388A25}.Release|x86.Build.0 = Release|x86
 		{16C9759E-EE09-4AE4-A81F-CD7AD8388A25}.Release|x86.Deploy.0 = Release|x86
+		{F4BB8529-B160-434D-AFAB-943933071266}.Debug|ARM.ActiveCfg = Debug|ARM
+		{F4BB8529-B160-434D-AFAB-943933071266}.Debug|ARM.Build.0 = Debug|ARM
+		{F4BB8529-B160-434D-AFAB-943933071266}.Debug|ARM.Deploy.0 = Debug|ARM
+		{F4BB8529-B160-434D-AFAB-943933071266}.Debug|x64.ActiveCfg = Debug|x64
+		{F4BB8529-B160-434D-AFAB-943933071266}.Debug|x64.Build.0 = Debug|x64
+		{F4BB8529-B160-434D-AFAB-943933071266}.Debug|x64.Deploy.0 = Debug|x64
+		{F4BB8529-B160-434D-AFAB-943933071266}.Debug|x86.ActiveCfg = Debug|x86
+		{F4BB8529-B160-434D-AFAB-943933071266}.Debug|x86.Build.0 = Debug|x86
+		{F4BB8529-B160-434D-AFAB-943933071266}.Debug|x86.Deploy.0 = Debug|x86
+		{F4BB8529-B160-434D-AFAB-943933071266}.Release|ARM.ActiveCfg = Release|ARM
+		{F4BB8529-B160-434D-AFAB-943933071266}.Release|ARM.Build.0 = Release|ARM
+		{F4BB8529-B160-434D-AFAB-943933071266}.Release|ARM.Deploy.0 = Release|ARM
+		{F4BB8529-B160-434D-AFAB-943933071266}.Release|x64.ActiveCfg = Release|x64
+		{F4BB8529-B160-434D-AFAB-943933071266}.Release|x64.Build.0 = Release|x64
+		{F4BB8529-B160-434D-AFAB-943933071266}.Release|x64.Deploy.0 = Release|x64
+		{F4BB8529-B160-434D-AFAB-943933071266}.Release|x86.ActiveCfg = Release|x86
+		{F4BB8529-B160-434D-AFAB-943933071266}.Release|x86.Build.0 = Release|x86
+		{F4BB8529-B160-434D-AFAB-943933071266}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
