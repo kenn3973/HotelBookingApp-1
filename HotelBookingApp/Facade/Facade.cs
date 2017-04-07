@@ -48,6 +48,38 @@ namespace HotelBookingApp.Facade
             }
         }
 
+        /*Get number of bookings*/
+        public static async Task<ObservableCollection<NrOfBookings>> GetNrOfBookingsAsync()
+        {
+
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.BaseAddress = new Uri(serverUrl);
+                client.DefaultRequestHeaders.Clear();
+                string urlStringGet = "api/nrofbookings/";
+
+                try
+                {
+                    HttpResponseMessage getResponse = await client.GetAsync(urlStringGet);
+
+                    if (getResponse.IsSuccessStatusCode)
+                    {
+                        var TempGuestsCollection = await getResponse.Content.ReadAsAsync<ObservableCollection<NrOfBookings>>();
+                        return TempGuestsCollection;
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageDialog exception = new MessageDialog(e.Message);
+                }
+                /*Har prøvet at få en MessageDialog til at bekræfte at gæsterne er hentet fra databasen, men det lykkedes ikke.*/
+                //MessageDialog succes = new MessageDialog($"Gæsterne blev hentet fra databasen via {serverUrl} Hotel Guest Web Service.");
+                return null;
+            }
+        }
+
+
         public static async Task<Guest> GetGuestAsync(int guestId)
         {
 

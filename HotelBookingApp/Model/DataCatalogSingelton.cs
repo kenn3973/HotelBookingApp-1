@@ -24,13 +24,25 @@ namespace HotelBookingApp.Model
         }
 
         public ObservableCollection<Guest> Guests { get; set; }
+        public ObservableCollection<NrOfBookings> GuestBookings { get; set; }
 
         private DataCatalogSingelton()
         {
             Guests = new ObservableCollection<Guest>();
+            GuestBookings = new ObservableCollection<NrOfBookings>();
             GetGuestsAsync();
+            GetNrOfBookingsAsync();
         }
 
+
+        /*DBView*/
+        public async Task GetNrOfBookingsAsync()
+        {
+            foreach (var item in await Facade.Facade.GetNrOfBookingsAsync())
+            {
+                this.GuestBookings.Add(item);
+            }
+        }
 
         /*Guest List methoder*/
 

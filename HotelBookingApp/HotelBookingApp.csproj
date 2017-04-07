@@ -99,6 +99,7 @@
     <Compile Include="Facade\Facade.cs" />
     <Compile Include="Handler\GuestHandler.cs" />
     <Compile Include="Model\DataCatalogSingelton.cs" />
+    <Compile Include="Model\NrOfBookings.cs" />
     <Compile Include="View\BookingView.xaml.cs">
       <DependentUpon>BookingView.xaml</DependentUpon>
     </Compile>
